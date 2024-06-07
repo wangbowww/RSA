@@ -96,6 +96,7 @@ string run_decode(){
 
 int run_hack(int e,int n){
     cout << "\n-------------------------------------\n";
+    auto start = std::chrono::high_resolution_clock::now();
     int p,q;
     for(int i=2;i<=sqrt(n);++i){
         if(n % i==0){
@@ -104,6 +105,10 @@ int run_hack(int e,int n){
         }
     }
     int z = (p-1) * (q-1);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    cout << "ÆÆ½âÓÃÊ±: " << duration << "\n";
     return inv(e,z);
 }
 
